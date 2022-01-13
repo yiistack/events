@@ -1,33 +1,35 @@
 {
-    "name": "yiistack/your-package-name",
+    "name": "yiistack/events",
     "type": "library",
-    "description": "_____",
+    "description": "Yii event dispatcher attributes",
     "keywords": [
-        "_____"
+        "yii3",
+        "event-dispatcher",
+        "attributes"
     ],
     "homepage": "https://github.com/yiistack",
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/yiistack/_____/issues?state=open",
-        "source": "https://github.com/yiistack/_____"
+        "issues": "https://github.com/yiistack/events/issues?state=open",
+        "source": "https://github.com/yiistack/events"
     },
     "require": {
         "php": "^7.4|^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.4",
-        "roave/infection-static-analysis-plugin": "^1.5",
+        "phpunit/phpunit": "^9.5",
+        "roave/infection-static-analysis-plugin": "^1.15",
         "spatie/phpunit-watcher": "^1.23",
-        "vimeo/psalm": "^4.2"
+        "vimeo/psalm": "^4.18"
     },
     "autoload": {
         "psr-4": {
-            "Yiistack\\_____\\": "src"
+            "Yiistack\\Events\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yiistack\\_____\\Tests\\": "tests"
+            "Yiistack\\Events\\Tests\\": "tests"
         }
     },
     "extra": {
