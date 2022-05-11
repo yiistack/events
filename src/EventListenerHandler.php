@@ -27,9 +27,9 @@ final class EventListenerHandler implements AttributeHandlerInterface
      */
     public function handle(ReflectionClass $class, iterable $attributes): void
     {
-        /** @var ResolvedAttribute<Listener> $attribute */
         foreach ($attributes as $attribute) {
             if ($attribute->getAttribute() instanceof Listener) {
+                /** @var ResolvedAttribute<Listener, \ReflectionFunction|\ReflectionMethod> $attribute */
                 $this->listenerCollection = $this->listenerCollection->add(
                     $this->prepareListener($attribute->getReflectionTarget()),
                     $attribute->getAttribute()->getEvent()
@@ -43,15 +43,15 @@ final class EventListenerHandler implements AttributeHandlerInterface
         return $this->listenerCollection;
     }
 
-    private function prepareListener(\ReflectionFunctionAbstract $reflection): callable
+    private function prepareListener(\ReflectionFunction|\ReflectionMethod $reflection): callable
     {
         if ($reflection instanceof \ReflectionMethod) {
             $listener = [$this->container->get($reflection->getDeclaringClass()->getName()), $reflection->getName()];
         } else {
-            $listener = $reflection->getName();
+            $listener = $reflection->getClosure();
         }
-        
-        return function (object $event) use ($listener) {
+        /** @var callable $listener */
+        return function (object $event) use ($listener): mixed {
             return $this->injector->invoke(
                 $listener,
                 [$event]
