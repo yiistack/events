@@ -14,7 +14,11 @@
         "source": "https://github.com/yiistack/events"
     },
     "require": {
-        "php": "^7.4|^8.0"
+        "php": "^8.0",
+        "rustamwin/attributes": "dev-master",
+        "yiisoft/di": "^1.0",
+        "yiisoft/event-dispatcher": "^1.0",
+        "yiisoft/injector": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
