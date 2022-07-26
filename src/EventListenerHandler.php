@@ -50,8 +50,8 @@ final class EventListenerHandler implements AttributeHandlerInterface
         } else {
             $listener = $reflection->getClosure();
         }
-        /** @var callable $listener */
         return function (object $event) use ($listener): mixed {
+            /** @var callable $listener */
             return $this->injector->invoke(
                 $listener,
                 [$event]
