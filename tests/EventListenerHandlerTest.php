@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Yiistack\Events\Tests;
 
 use Psr\Container\ContainerInterface;
@@ -17,7 +19,6 @@ use Yiistack\Events\Tests\Support\DummyListener;
 
 class EventListenerHandlerTest extends TestCase
 {
-
     public function testHandle(): void
     {
         $container = $this->getContainer();
@@ -28,8 +29,8 @@ class EventListenerHandlerTest extends TestCase
         );
 
         $listeners = new Provider($handler->getListenerCollection());
-        $this->assertEquals(1, iterator_count($listeners->getListenersForEvent(new DummyEvent)));
-        $this->assertCount(1, $listeners->getListenersForEvent(new DummyEvent));
+        $this->assertEquals(1, iterator_count($listeners->getListenersForEvent(new DummyEvent())));
+        $this->assertCount(1, $listeners->getListenersForEvent(new DummyEvent()));
     }
 
     private function getContainer(): ContainerInterface

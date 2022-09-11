@@ -16,6 +16,7 @@ final class EventListenerHandler implements AttributeHandlerInterface
 {
     private ListenerCollection $listenerCollection;
     private Injector $injector;
+
     public function __construct(private ContainerInterface $container)
     {
         $this->listenerCollection = new ListenerCollection();
